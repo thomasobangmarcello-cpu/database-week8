@@ -1,0 +1,221 @@
+
+-- ============================================================
+-- MYSQL DATABASE BACKUP ASSIGNMENT
+-- ============================================================
+-- Student Assignment: MySQL Database Backup Operations
+-- Database: sales
+-- Backup Utility: mysqldump
+-- Username: root
+--
+-- Learning Objectives:
+-- 1. Create a complete backup of a single database.
+-- 2. Create a backup of all databases on a MySQL server.
+-- 3. Create a data-only database backup.
+-- 4. Understand database recovery and migration.
+--
+-- NOTE:
+-- The mysqldump commands below should be executed in the
+-- system terminal, not in the MySQL SQL query editor.
+-- ============================================================
+
+
+-- ============================================================
+-- QUESTION 1: CREATING A COMPLETE DATABASE BACKUP
+-- ============================================================
+
+-- TASK:
+-- Create a complete backup of the sales database.
+--
+-- REQUIREMENTS:
+-- 1. Use root as the MySQL username.
+-- 2. Prompt for the database password.
+-- 3. Save the backup as sales_backup.sql.
+
+-- COMMAND TO EXECUTE IN THE TERMINAL:
+--
+-- mysqldump -u root -p sales > sales_backup.sql
+
+-- EXPLANATION:
+--
+-- mysqldump:
+-- This is a MySQL command-line utility used to export
+-- databases and create database backups.
+--
+-- -u root:
+-- Specifies root as the MySQL username.
+--
+-- -p:
+-- Prompts the user to enter the MySQL password.
+--
+-- sales:
+-- Specifies the database that needs to be backed up.
+--
+-- > sales_backup.sql:
+-- Redirects the backup output into a file named
+-- sales_backup.sql.
+--
+-- RESULT:
+-- A complete logical backup of the sales database is
+-- created, containing its table structures and data.
+--
+-- IMPORTANCE OF REGULAR DATABASE BACKUPS:
+--
+-- 1. Data Protection:
+-- Regular backups protect important business information
+-- against accidental deletion or modification.
+--
+-- 2. Disaster Recovery:
+-- Backups help restore a database after hardware failure,
+-- software problems, or unexpected disasters.
+--
+-- 3. Business Continuity:
+-- Backups help organizations continue their operations
+-- by reducing downtime after database failures.
+--
+-- 4. Data Recovery:
+-- Database administrators can use backups to recover
+-- lost or corrupted information.
+--
+-- 5. Security:
+-- Backups provide an additional layer of protection
+-- against unexpected data loss.
+
+
+-- ============================================================
+-- QUESTION 2: BACKING UP ALL DATABASES
+-- ============================================================
+
+-- TASK:
+-- Create a complete backup of every database available
+-- on the MySQL server.
+--
+-- REQUIREMENTS:
+-- 1. Use the appropriate option to export all databases.
+-- 2. Use root as the MySQL username.
+-- 3. Prompt for the MySQL password.
+-- 4. Save the backup as all_databases_backup.sql.
+
+-- COMMAND TO EXECUTE IN THE TERMINAL:
+--
+-- mysqldump -u root -p --all-databases > all_databases_backup.sql
+
+-- EXPLANATION:
+--
+-- mysqldump:
+-- Starts the MySQL database backup utility.
+--
+-- -u root:
+-- Specifies root as the MySQL username.
+--
+-- -p:
+-- Prompts the user to enter the MySQL password.
+--
+-- --all-databases:
+-- Specifies that all databases on the MySQL server
+-- should be exported.
+--
+-- > all_databases_backup.sql:
+-- Saves the exported databases into a file named
+-- all_databases_backup.sql.
+--
+-- RESULT:
+-- A logical backup containing all databases on the
+-- MySQL server is created.
+--
+-- IMPORTANCE OF BACKING UP ALL DATABASES BEFORE MIGRATION:
+--
+-- 1. Complete Data Protection:
+-- Backing up all databases ensures that important
+-- information is not left behind during migration.
+--
+-- 2. Easy Database Restoration:
+-- The backup can be imported into the new MySQL server
+-- to restore the databases.
+--
+-- 3. Prevents Data Loss:
+-- It reduces the risk of losing business information
+-- when moving from one server to another.
+--
+-- 4. Business Continuity:
+-- It helps organizations continue their operations
+-- after migrating to a new server.
+--
+-- 5. Preserves Database Information:
+-- It can preserve database structures, stored routines,
+-- triggers, and events when included in the dump.
+
+
+-- ============================================================
+-- QUESTION 3: CREATING A DATA-ONLY DATABASE BACKUP
+-- ============================================================
+
+-- TASK:
+-- Create a backup of only the data in the sales database,
+-- without exporting the table structures.
+--
+-- COMMAND TO EXECUTE IN THE TERMINAL:
+--
+-- mysqldump -u root -p --no-create-info sales > sales_data_backup.sql
+
+-- EXPLANATION:
+--
+-- mysqldump:
+-- Starts the MySQL backup utility.
+--
+-- -u root:
+-- Specifies root as the MySQL username.
+--
+-- -p:
+-- Prompts for the MySQL password.
+--
+-- --no-create-info:
+-- Excludes CREATE TABLE statements from the backup.
+-- This means that table structures are not exported.
+--
+-- sales:
+-- Specifies the database to back up.
+--
+-- > sales_data_backup.sql:
+-- Saves the data-only backup in a file named
+-- sales_data_backup.sql.
+--
+-- RESULT:
+-- A data-only logical backup of the sales database
+-- is created. It contains INSERT statements for
+-- restoring the table data.
+--
+-- IMPORTANCE OF DATA-ONLY BACKUPS:
+--
+-- 1. They allow data to be transferred into existing
+--    database tables.
+--
+-- 2. They are useful when the destination database
+--    already has the required table structures.
+--
+-- 3. They make it easier to move data between databases.
+--
+-- 4. They can be useful when updating or restoring
+--    data without recreating table structures.
+--
+-- 5. They provide flexibility during database migration.
+
+
+-- ============================================================
+-- SUMMARY OF THE THREE BACKUP COMMANDS
+-- ============================================================
+--
+-- QUESTION 1: Complete backup of the sales database
+--
+-- mysqldump -u root -p sales > sales_backup.sql
+--
+-- QUESTION 2: Backup of all databases
+--
+-- mysqldump -u root -p --all-databases > all_databases_backup.sql
+--
+-- QUESTION 3: Data-only backup of the sales database
+--
+-- mysqldump -u root -p --no-create-info sales > sales_data_backup.sql
+--
+-- ============================================================
+-- END OF MYSQL DATABASE BACKUP ASSIGNMENT
+-- ============================================================
